@@ -1,0 +1,25 @@
+[backend "rabbit"]
+URI="amqp://guest:guest@rabbit.server.consul:5672/"
+queue="cfw"
+limit=1000000
+
+[backend "disk"]
+URI="/var/log/ulogd.backup"
+
+[backend "redis"]
+URI="10.0.0.1:6379"
+queue="cfw"
+limit=1000000
+
+[backend "es"]
+URI="http://http-query.fw-log.service.consul:9200"
+index="ulog2queue-fw-2006.01.02"
+bulk=5000
+workers=10
+
+[general]
+primary="es"
+backup="disk"
+geoip2db="/usr/share/ulog2queue/GeoLite2-City.mmdb"
+tailfile="/var/log/ulogd.json"
+buffer=10000
