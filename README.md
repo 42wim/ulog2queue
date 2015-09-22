@@ -98,7 +98,7 @@ buffer=10000
 
 ### Step 4 - create elasticsearch mapping
 ```
-$ curl -XPUT http://fw-log.service.svcd:9200/_template/json-log -d "@ulog2queue-es-mapping.json"
+$ curl -XPUT http://fw-log.service.consul:9200/_template/json-log -d "@ulog2queue-es-mapping.json"
 ```
 
 ### Step 5 - systemd unit
