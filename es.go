@@ -23,11 +23,15 @@ func NewESBackend(ctx *Context, id string) *esBackend {
 		log.Fatal("ES:", id, ": no node available")
 	}
 	return &esBackend{ctx: ctx, id: id, c: client, bulkRequest: client.Bulk(),
-		count: 1, currentIndex: time.Now().Format(ctx.cfg.Backend["es"].Index),
+		count: 1, currentIndex: time.Now().UTC().Format(ctx.cfg.Backend["es"].Index),
 		bulk: ctx.cfg.Backend["es"].Bulk}
 }
 
 func (b *esBackend) BulkAdd(line *[]byte) {
+	if b.currentIndex != time.Now().UTC().Format(b.ctx.cfg.Backend["es"].Index) {
+		b.currentIndex = time.Now().UTC().Format(b.ctx.cfg.Backend["es"].Index)
+		log.Info("ES:", b.id, ": index changed to ", b.currentIndex)
+	}
 	request := elastic.NewBulkIndexRequest().Index(b.currentIndex).Type("json-log").Doc(string(*line)).Id(b.id + strconv.FormatUint(b.count, 32))
 	b.bulkRequest = b.bulkRequest.Add(request)
 	b.ctx.parsedRate <- 1
@@ -44,10 +48,6 @@ func (b *esBackend) Flush() error {
 	if err != nil {
 		log.Error("ES:", b.id, ": bulkresponse error ", err)
 		return err
-	}
-	if b.currentIndex != time.Now().Format(b.ctx.cfg.Backend["es"].Index) {
-		b.currentIndex = time.Now().Format(b.ctx.cfg.Backend["es"].Index)
-		log.Info("ES:", b.id, ": index changed to ", b.currentIndex)
 	}
 	return nil
 }
