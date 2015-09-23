@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"github.com/ActiveState/tail"
 	"github.com/Sirupsen/logrus"
+	"github.com/hashicorp/golang-lru"
 	"github.com/oschwald/geoip2-golang"
 	_ "github.com/pkg/profile"
 	"github.com/pquerna/ffjson/ffjson"
@@ -16,6 +17,7 @@ import (
 
 var flagPrimary, flagQueue, flagBackup, flagTailFile string
 var geoipDB *geoip2.Reader
+var geoipCache *lru.Cache
 var cfg *Config
 var nrCPU = runtime.GOMAXPROCS(-1)
 var log = logrus.New()
@@ -28,6 +30,7 @@ func parseLine(line *[]byte) {
 	var f nf
 	var t time.Time
 	var realRegionName, regionName string
+	var record *geoip2.City
 
 	err := ffjson.Unmarshal(*line, &f)
 	if err != nil {
@@ -36,8 +39,14 @@ func parseLine(line *[]byte) {
 		return
 	}
 
-	ip := net.ParseIP(*f.Srcip)
-	record, _ := geoipDB.City(ip)
+	// use LRU cache
+	if val, ok := geoipCache.Get(*f.Srcip); ok {
+		record = val.(*geoip2.City)
+	} else {
+		ip := net.ParseIP(*f.Srcip)
+		record, _ = geoipDB.City(ip)
+		geoipCache.Add(*f.Srcip, record)
+	}
 
 	// add @timestamp with zulu (ISO8601 time)
 	t, _ = time.ParseInLocation(nfLayout, *f.Timestamp, myLocation)
@@ -216,6 +225,7 @@ func init() {
 		flagTailFile = cfg.General.TailFile
 	}
 	myLocation, _ = time.LoadLocation("Local")
+	geoipCache, _ = lru.New(10000)
 }
 
 func main() {
