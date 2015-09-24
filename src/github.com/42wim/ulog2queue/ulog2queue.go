@@ -3,7 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
-	"github.com/ActiveState/tail"
+	"github.com/42wim/tail"
 	"github.com/Sirupsen/logrus"
 	"github.com/hashicorp/golang-lru"
 	"github.com/oschwald/geoip2-golang"
