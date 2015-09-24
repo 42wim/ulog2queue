@@ -1,0 +1,126 @@
+{
+	"version": 0,
+	"dependencies": [
+		{
+			"importpath": "code.google.com/p/gcfg",
+			"repository": "https://code.google.com/p/gcfg",
+			"revision": "c2d3050044d05357eaf6c3547249ba57c5e235cb",
+			"branch": "master"
+		},
+		{
+			"importpath": "github.com/42wim/tail",
+			"repository": "https://github.com/42wim/tail",
+			"revision": "52a42ed990b2a35addc1096b3e26717b1a0760b8",
+			"branch": "namedpipe"
+		},
+		{
+			"importpath": "github.com/ActiveState/tail/ratelimiter",
+			"repository": "https://github.com/ActiveState/tail",
+			"revision": "4b368d1590196ade29993d6a0896591403180bbd",
+			"branch": "master",
+			"path": "/ratelimiter"
+		},
+		{
+			"importpath": "github.com/ActiveState/tail/util",
+			"repository": "https://github.com/ActiveState/tail",
+			"revision": "4b368d1590196ade29993d6a0896591403180bbd",
+			"branch": "master",
+			"path": "/util"
+		},
+		{
+			"importpath": "github.com/ActiveState/tail/watch",
+			"repository": "https://github.com/ActiveState/tail",
+			"revision": "4b368d1590196ade29993d6a0896591403180bbd",
+			"branch": "master",
+			"path": "/watch"
+		},
+		{
+			"importpath": "github.com/Sirupsen/logrus",
+			"repository": "https://github.com/Sirupsen/logrus",
+			"revision": "418b41d23a1bf978c06faea5313ba194650ac088",
+			"branch": "master"
+		},
+		{
+			"importpath": "github.com/davidnarayan/go-flake",
+			"repository": "https://github.com/davidnarayan/go-flake",
+			"revision": "9842d92ff6e7f31c33ee6683d3c503967c83c071",
+			"branch": "master"
+		},
+		{
+			"importpath": "github.com/garyburd/redigo/internal",
+			"repository": "https://github.com/garyburd/redigo",
+			"revision": "46806c72355edd62250ac37a8b1a565618b39e22",
+			"branch": "master",
+			"path": "/internal"
+		},
+		{
+			"importpath": "github.com/garyburd/redigo/redis",
+			"repository": "https://github.com/garyburd/redigo",
+			"revision": "46806c72355edd62250ac37a8b1a565618b39e22",
+			"branch": "master",
+			"path": "/redis"
+		},
+		{
+			"importpath": "github.com/hashicorp/golang-lru",
+			"repository": "https://github.com/hashicorp/golang-lru",
+			"revision": "7f9ef20a0256f494e24126014135cf893ab71e9e",
+			"branch": "master"
+		},
+		{
+			"importpath": "github.com/oschwald/geoip2-golang",
+			"repository": "https://github.com/oschwald/geoip2-golang",
+			"revision": "3006cd862896742d41f7dca265b853fcad8a3f90",
+			"branch": "master"
+		},
+		{
+			"importpath": "github.com/oschwald/maxminddb-golang",
+			"repository": "https://github.com/oschwald/maxminddb-golang",
+			"revision": "b4a963502ba01ab44940ee21d5539bd65c726924",
+			"branch": "master"
+		},
+		{
+			"importpath": "github.com/pkg/profile",
+			"repository": "https://github.com/pkg/profile",
+			"revision": "c795610ec6e479e5795f7852db65ea15073674a6",
+			"branch": "master"
+		},
+		{
+			"importpath": "github.com/pquerna/ffjson/ffjson",
+			"repository": "https://github.com/pquerna/ffjson",
+			"revision": "184f78649ba053f484de46921391e6d0c6f5172f",
+			"branch": "master",
+			"path": "/ffjson"
+		},
+		{
+			"importpath": "github.com/pquerna/ffjson/fflib/v1",
+			"repository": "https://github.com/pquerna/ffjson",
+			"revision": "184f78649ba053f484de46921391e6d0c6f5172f",
+			"branch": "master",
+			"path": "/fflib/v1"
+		},
+		{
+			"importpath": "github.com/streadway/amqp",
+			"repository": "https://github.com/streadway/amqp",
+			"revision": "79beb307dcf5904fb8cb061276f1c14f222012c2",
+			"branch": "master"
+		},
+		{
+			"importpath": "gopkg.in/fsnotify.v0",
+			"repository": "https://gopkg.in/fsnotify.v0",
+			"revision": "ea925a0a47d225b2ca7f9932b01d2ed4f3ec74f6",
+			"branch": "master"
+		},
+		{
+			"importpath": "gopkg.in/olivere/elastic.v2",
+			"repository": "https://gopkg.in/olivere/elastic.v2",
+			"revision": "af87479575fe40014ace9df173b8ea3ddbbdd821",
+			"branch": "master"
+		},
+		{
+			"importpath": "gopkg.in/tomb.v1",
+			"repository": "https://gopkg.in/tomb.v1",
+			"revision": "dd632973f1e7218eb1089048e0798ec9ae7dceb8",
+			"branch": "master"
+		}
+	]
+}

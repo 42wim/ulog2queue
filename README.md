@@ -30,16 +30,23 @@ More info about ulogd and json logging: [regit blog](https://home.regit.org/2014
 * elasticsearch cluster
 
 ## building
-Make sure you have [Go](https://golang.org/doc/install) properly installed, including setting up your [GOPATH](https://golang.org/doc/code.html#GOPATH)
+Make sure you have [Go](https://golang.org/doc/install) properly installed.
 
-Next, run
+ulog2queue uses the [gb tool](http://getgb.io) to manage dependencies and producing builds.
 
- ```
- $ cd $GOPATH
- $ go get github.com/42wim/ulog2queue
- ```
 
- You'll have the binary 'ulog2queue' in $GOPATH/bin
+```
+git clone https://github.com/42wim/ulog2queue.git
+cd ulog2queue
+gb build all
+```
+
+You should now have ulog2queue binary in the bin directory:
+
+```
+$ ls bin/
+ulog2queue
+```
 
 ## usage
 ```
