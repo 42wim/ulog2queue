@@ -32,7 +32,7 @@ func (b *esBackend) BulkAdd(line *[]byte) {
 		b.currentIndex = time.Now().UTC().Format(b.ctx.cfg.Backend["es"].Index)
 		log.Info("ES:", b.id, ": index changed to ", b.currentIndex)
 	}
-	request := elastic.NewBulkIndexRequest().Index(b.currentIndex).Type("json-log").Doc(string(*line)).Id(b.id + strconv.FormatUint(b.count, 32))
+	request := elastic.NewBulkIndexRequest().Index(b.currentIndex).Type("json-log").Doc(string(*line)).Id(getFlakeID())
 	b.bulkRequest = b.bulkRequest.Add(request)
 	b.ctx.parsedRate <- 1
 	b.count++
