@@ -171,7 +171,7 @@ func rateLogger(ctx *Context) {
 
 func tailUlog(ctx *Context) {
 	logfile := flagTailFile
-	t, err := tail.TailFile(logfile, tail.Config{Poll: true, Follow: true, ReOpen: true})
+	t, err := tail.TailFile(logfile, tail.Config{Poll: true, Follow: true, ReOpen: true, Pipe: true})
 	if err != nil {
 		log.Error(err)
 	}
