@@ -238,8 +238,8 @@ func main() {
 		runtime.GOMAXPROCS(nrCPU)
 	}
 	context := &Context{make(chan *string, 10000),
-		make(chan *[]byte, 10000),
 		make(chan *[]byte, cfg.General.Buffer),
+		make(chan *[]byte, 10000),
 		make(chan int),
 		make(chan int),
 		make(chan string),
