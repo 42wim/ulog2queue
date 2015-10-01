@@ -39,6 +39,11 @@ func parseLine(line *[]byte) {
 		return
 	}
 
+	if f.Srcip == nil {
+		log.Error("Packet without source ip, shouldn't happen: ", *line)
+		return
+	}
+
 	// use LRU cache
 	if val, ok := geoipCache.Get(*f.Srcip); ok {
 		record = val.(*geoip2.City)
