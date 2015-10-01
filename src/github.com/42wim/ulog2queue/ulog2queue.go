@@ -40,7 +40,7 @@ func parseLine(line *[]byte) {
 	}
 
 	if f.Srcip == nil {
-		log.Error("Packet without source ip, shouldn't happen: ", *line)
+		log.Error("Packet without source ip, shouldn't happen: ", string(*line))
 		return
 	}
 
