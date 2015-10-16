@@ -1,9 +1,10 @@
+[Unit]
 Description=ulog2queue
 Wants=network.target ulogd.service
 After=network.target ulogd.service
 
 [Service]
-ExecStart=/usr/bin/ulog2queue -conf /etc/ulog2queue.cfg
+ExecStart=/usr/bin/ulog2queue -conf /etc/ulog2queue.conf
 KillSignal=SIGINT
 
 [Install]
