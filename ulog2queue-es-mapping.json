@@ -11,6 +11,7 @@
           "string_fields" : {
             "mapping" : {
               "type" : "multi_field",
+              "doc_values": true,
               "fields" : {
                 "raw" : {
                   "index" : "not_analyzed",
@@ -28,13 +29,45 @@
             "match_mapping_type" : "string",
             "match" : "*"
           }
-        } ],
+        },
+        {
+        "long": {
+          "mapping": {
+            "type": "long",
+            "doc_values": true
+          },
+          "match_mapping_type": "long",
+          "match": "*"
+          }
+        },
+        {
+        "double": {
+          "mapping": {
+            "type": "double",
+            "doc_values": true
+          },
+          "match_mapping_type": "double",
+          "match": "*"
+          }
+        },
+        {
+        "date": {
+          "mapping": {
+            "type": "date",
+            "doc_values": true
+          },
+          "match_mapping_type": "date",
+          "match": "*"
+          }
+        }
+        ],
         "properties" : {
           "geoip" : {
             "dynamic" : true,
             "path" : "full",
             "properties" : {
               "location" : {
+                "doc_values": true,
                 "type" : "geo_point"
               }
             },
@@ -46,7 +79,7 @@
           }
         },
         "_all" : {
-          "enabled" : true
+          "enabled" : false
         }
       }
     },
