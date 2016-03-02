@@ -1,0 +1,13 @@
+[Unit]
+Description=ulog2file
+Wants=network.target ulogd.service
+After=network.target ulogd.service sshd-oob.service oob.service
+Requires=oob.service
+
+[Service]
+ExecStart=/usr/bin/ulog2file -conf /etc/ulog2queue-ng.conf
+KillSignal=SIGINT
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

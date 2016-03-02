@@ -1,0 +1,13 @@
+[Unit]
+Description=file2queue
+Wants=network.target ulogd.service
+After=network.target ulogd.service sshd-oob.service oob.service ulog2file.service
+Requires=oob.service
+
+[Service]
+ExecStart=/usr/sbin/ip netns exec oob /usr/bin/file2queue -conf /etc/ulog2queue-ng.conf
+KillSignal=SIGINT
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
